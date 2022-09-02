@@ -50,17 +50,3 @@ diff mysolution1.txt solution1.txt
 ```
 Si el segundo comando no tiene ninguna salida, los resultados que obtuviste son los esperados.
 
-## <span style="color: rgb(26, 99, 169);">**¿Bajo qué criterios se evalúa mi evidencia?**</span>
-
-- **90%** - Para cada una de las funcionalidades se evaluará:
-
-    - **Excelente (90%)** - pasa correctamente todos los casos de prueba.
-    - **Muy Bien (70%)** - pasa correctamente el 75% de los casos de prueba.
-    - **Bien (45%)** - pasa correctamente el 50% de los casos de prueba.
-    - **Insuficiente (22%)** - pasa correctamente menos del 50% de los casos de prueba.
-
-
-- **10%** - El código deberá seguir los lineamientos estipulados en el estándar de codificación: <span class="instructure_file_holder link_holder">[liga_estándar_codificación](estandar.pdf)</span>
-
-## <span style="color: rgb(26, 99, 169);">**¿Dónde la entrego?**</span>
-Cuando hayas pasado todas las pruebas, recuerda publicar el código en tu repositorio (*git push*).
