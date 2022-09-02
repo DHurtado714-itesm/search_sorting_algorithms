@@ -32,15 +32,12 @@ int main(int argc, char* argv[]) {
 
 		int current_line = 0;
 		string line;
-		getline(inputFile, line);
 		
+		inputFile >> size_n;
+
 		while(current_line < 4) { 
-			if(current_line == 0) {
-				getline(inputFile, line);
-				inputFile >> size_n;
-			}
-			else if(current_line == 2) {
-				getline(inputFile, line);
+			getline(inputFile, line);
+			if(current_line == 1) {
 				inputFile >> size_q;
 			}
 			
@@ -55,8 +52,6 @@ int main(int argc, char* argv[]) {
 
 	}
 
-	
-
 
 
 
@@ -66,6 +61,11 @@ int main(int argc, char* argv[]) {
 }
 
 
+// Entrada
+// n es int positivo entre 300 y 500 inclusive
+// n es el numero de datos a leer
+// q indica cantidad de numeros a buscar
+// q a leer
 // Lea n datos
 // los ordene
 // indique la cantidad de comparaciones (burbuja, insercion, seleccion)
@@ -73,11 +73,6 @@ int main(int argc, char* argv[]) {
 // mostrar la posicion de cada valor en el arreglo (-1 si no esta)
 // mostrar la cantidad de comparaciones (busqueda secuencial, busqueda binaria)
 
-// Entrada
-// n es int positivo entre 300 y 500 inclusive
-// n es el numero de datos a leer
-// q indica cantidad de numeros a buscar
-// q a leer
 
 // Salida
 // 1 linea = numero de comparaciones de cada algoritmo (burbuja, insercion, seleccion)
