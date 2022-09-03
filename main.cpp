@@ -25,8 +25,8 @@ int main(int argc, char* argv[]) {
 
 		
 	//Open file and read variables
-	inputFile.open("input1.txt");
-	outputFile.open("output1.txt");
+	inputFile.open(argv[1]);
+	outputFile.open(argv[2]);
 
 	// n 
 
@@ -49,17 +49,18 @@ int main(int argc, char* argv[]) {
 
 	// q
 	inputFile >> size_q;
-	cout << "q: " << size_q << endl;
 	pair<int,int> sequentialSearch_q;
 	pair<int,int> binarySearch_q;
 
+	int data_q;
+
 	// Search
 	for(int q = 0; q < size_q; q++) {
-		inputFile >> q;
-		sequentialSearch_q = sequentialSearch(vector_n, q);
+		inputFile >> data_q;
+		sequentialSearch_q = sequentialSearch(vector_n, data_q);
 		outputFile << sequentialSearch_q.first << ' '
 				<< sequentialSearch_q.second << ' ';
-		binarySearch_q = binarySearch(vector_n, q);
+		binarySearch_q = binarySearch(vector_n, data_q);
 		outputFile << binarySearch_q.second << '\n';
 	}
 
