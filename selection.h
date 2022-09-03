@@ -45,8 +45,9 @@ void selectionSort(T *arr, int size) {
 // @param A, a vector of T elements.
 // =================================================================
 template <class T>
-void selectionSort(std::vector<T> &v) {
+int selectionSort(std::vector<T> &v) {
 	int pos;
+	int count_selection = 0;
 
 	for(int i = v.size() - 1; i > 0; i--){
 		pos = 0;
@@ -58,8 +59,10 @@ void selectionSort(std::vector<T> &v) {
 
 		if (pos != i){
 			swap(v, i, pos);
+			count_selection++;
 		}
 	}
+	return count_selection;
 }
 
 #endif /* SELECTION_H */

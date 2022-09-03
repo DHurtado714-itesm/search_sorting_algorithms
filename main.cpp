@@ -19,61 +19,53 @@ using namespace std;
 int main(int argc, char* argv[]) {
 
 	ifstream inputFile;
-	
+	ofstream outputFile;
+
 	int size_n, size_q;
 
-	for (int i = 1; i < 5; i++) {
 		
-		//Open file and read variables
-		
-		string fileName = "input" + to_string(i) + ".txt";
-		inputFile.open(fileName);
-		cout << "Archivo: " << fileName << endl;
+	//Open file and read variables
+	inputFile.open("input1.txt");
+	outputFile.open("output1.txt");
 
-		int current_line = 0;
-		string line;
-		
-		inputFile >> size_n;
+	// n 
 
-		while(current_line < 4) { 
-			getline(inputFile, line);
-			if(current_line == 1) {
-				inputFile >> size_q;
-			}
-			
-			current_line++;
-			
-		}
+	inputFile >> size_n;
+	vector<int>vector_n(size_n);
+	for(int n = 0; n < size_n; n++) {
+		inputFile >> vector_n[n];
+	}
+	
+	// Copy vectors
+	vector<int> vector_n_copy_1 = vector_n;
+	vector<int> vector_n_copy_2 = vector_n;
 
-		cout << "Size n: " << size_n << endl;
-		cout << "Size q: " << size_q << endl;
-		inputFile.close();
-		
+	// Sorting vectors
+	int insertionSort_n = insertionSort(vector_n_copy_1);
+	int bubbleSort_n = bubbleSort(vector_n_copy_2);
+	int selectionSort_n = selectionSort(vector_n);
 
+	outputFile << bubbleSort_n << " " << selectionSort_n << " " << insertionSort_n << endl << endl;
+
+	// q
+	inputFile >> size_q;
+	cout << "q: " << size_q << endl;
+	pair<int,int> sequentialSearch_q;
+	pair<int,int> binarySearch_q;
+
+	// Search
+	for(int q = 0; q < size_q; q++) {
+		inputFile >> q;
+		sequentialSearch_q = sequentialSearch(vector_n, q);
+		outputFile << sequentialSearch_q.first << ' '
+				<< sequentialSearch_q.second << ' ';
+		binarySearch_q = binarySearch(vector_n, q);
+		outputFile << binarySearch_q.second << '\n';
 	}
 
-
-
-
-
+	// Close file
+	inputFile.close();
+	outputFile.close();
 
 	return 0;
 }
-
-
-// Entrada
-// n es int positivo entre 300 y 500 inclusive
-// n es el numero de datos a leer
-// q indica cantidad de numeros a buscar
-// q a leer
-// Lea n datos
-// los ordene
-// indique la cantidad de comparaciones (burbuja, insercion, seleccion)
-// leer q valores
-// mostrar la posicion de cada valor en el arreglo (-1 si no esta)
-// mostrar la cantidad de comparaciones (busqueda secuencial, busqueda binaria)
-
-
-// Salida
-// 1 linea = numero de comparaciones de cada algoritmo (burbuja, insercion, seleccion)
-// q linea = posicion, cantidad de comparaciones de sequencial y cantidad de comparacioens de binaria

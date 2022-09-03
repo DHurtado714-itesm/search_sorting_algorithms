@@ -24,13 +24,16 @@
 //		   is not found in the vector.
 // =================================================================
 template <class T>
-int sequentialSearch(const std::vector<T> &v, T key) {
+std::pair<int, int> 
+sequentialSearch(const std::vector<T> &v, T key) {
+	int count_SSearch = 0;
 	for (int i = 0; i < v.size(); i++) {
+		count_SSearch++;
 		if (v[i] == key) {
-			return i;
+			return std::make_pair(i, count_SSearch);
 		}
 	}
-	return -1;
+	return std::make_pair(-1, count_SSearch);
 }
 
 // =================================================================
@@ -42,22 +45,25 @@ int sequentialSearch(const std::vector<T> &v, T key) {
 //		   is not found in the vector.
 // =================================================================
 template <class T>
-int binarySearch(const std::vector<T> &v, T key) {
+std::pair<int, int> 
+binarySearch(const std::vector<T> &v, T key) {
 	int low, high, mid;
 
+	int count_BSearch = 0;
 	low = 0;
 	high = v.size() - 1;
 	while (low <= high) {
+		count_BSearch++;
 		mid = low + ((high - low) / 2); // mid = (high + low) / 2;
 		if (key == v[mid]) {
-			return mid;
+			return std::make_pair(mid, count_BSearch);
 		} else if (key < v[mid]) {
 			high = mid - 1;
 		} else {
 			low = mid + 1;
 		}
 	}
-	return -1;
+	return std::make_pair(-1, count_BSearch);
 }
 
 // =================================================================
@@ -71,9 +77,8 @@ int binarySearch(const std::vector<T> &v, T key) {
 //		   is not found in the vector.
 // =================================================================
 template <class T>
-int binaryRSearch(const std::vector<T> &v, int low, int high, T key) {
+int* binaryRSearch(const std::vector<T> &v, int low, int high, T key) {
 	int mid;
-
 	if (low > high) {
 		return -1;
 	} else {
@@ -86,6 +91,7 @@ int binaryRSearch(const std::vector<T> &v, int low, int high, T key) {
 			return binaryRSearch(v, mid + 1, high, key);
 		}
 	}
+	return -1;
 }
 
 #endif /* SEARCH_H */
